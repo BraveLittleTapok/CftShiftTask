@@ -1,7 +1,7 @@
-short
+Example string
 6
 -70
 1234567890543
 56.78
 1.528535047E-25
-Average string
+Example 2 string

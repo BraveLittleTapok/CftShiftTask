@@ -16,7 +16,7 @@ public class DataWriterReader {
     public void createFilteredData(List<String> files) throws IOException {
         File tmpFileWithData = createTempFile(files);
         try (BufferedReader reader = new BufferedReader(new FileReader(tmpFileWithData))) {
-            String line = reader.readLine();
+            String line = new String(reader.readLine().getBytes(), "UTF-8");
             while (line != null) {
                 if (line.contains(".")) {
                     writeDoubleValues(line);
