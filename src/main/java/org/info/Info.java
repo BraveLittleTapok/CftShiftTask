@@ -1,4 +1,4 @@
-package org.utils;
+package org.info;
 
 public class Info {
 

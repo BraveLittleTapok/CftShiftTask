@@ -79,10 +79,6 @@ public class DataWriterReader {
     }
 
     private void copyIntoStream(String file, FileOutputStream outputStream) throws IOException {
-      /*  try (InputStream inputStream = new FileInputStream(file)) {
-            IOUtils.copy(inputStream, new OutputStreamWriter(outputStream, "UTF-8"));
-            IOUtils.write("\n", outputStream);
-        }*/
         try (InputStream inputStream = new FileInputStream(file);
              OutputStreamWriter writer = new OutputStreamWriter(outputStream, "UTF-8")) {
             IOUtils.copy(inputStream, writer);

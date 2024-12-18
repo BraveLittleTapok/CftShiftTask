@@ -9,7 +9,7 @@ import java.util.stream.LongStream;
 
 import static java.lang.System.exit;
 import static org.core.OptionsParser.*;
-import static org.utils.Info.displayInfo;
+import static org.info.Info.displayInfo;
 import static picocli.CommandLine.*;
 
 @Command(name = "Main")
