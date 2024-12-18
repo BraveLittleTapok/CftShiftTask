@@ -71,6 +71,7 @@ public class Main implements Runnable {
         dataRdWr.writeDataInFile(pathForIntResultFile, listLong);
         dataRdWr.writeDataInFile(pathForFloatResultFile, listDouble);
         dataRdWr.writeDataInFile(pathForStringResultFile, listString);
+        System.out.println("Данные были записаны");
         if (shortInfo) {
             printShortInfo();
         }
