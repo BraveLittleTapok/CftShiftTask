@@ -16,7 +16,7 @@ public class DataWriterReader {
     public void createFilteredData(List<String> files) throws IOException {
         File tmpFileWithData = createTempFile(files);
         try (BufferedReader reader = new BufferedReader(new FileReader(tmpFileWithData))) {
-            String line = new String(reader.readLine().getBytes(StandardCharsets.UTF_8));
+            String line = reader.readLine();
             while (line != null) {
                 if (line.contains(".")) {
                     writeDoubleValues(line);
@@ -70,8 +70,8 @@ public class DataWriterReader {
             }
             if (!list.isEmpty()) {
                 for (T element : list) {
-                    outInt.write(element.toString().getBytes(StandardCharsets.UTF_8));
-                    outInt.write("\n".getBytes(StandardCharsets.UTF_8));
+                    outInt.write(element.toString().getBytes());
+                    outInt.write("\n".getBytes());
                 }
             }
             outInt.close();
@@ -79,9 +79,14 @@ public class DataWriterReader {
     }
 
     private void copyIntoStream(String file, FileOutputStream outputStream) throws IOException {
-        try (InputStream inputStream = new FileInputStream(file)) {
-            IOUtils.copy(inputStream, outputStream);
+      /*  try (InputStream inputStream = new FileInputStream(file)) {
+            IOUtils.copy(inputStream, new OutputStreamWriter(outputStream, "UTF-8"));
             IOUtils.write("\n", outputStream);
+        }*/
+        try (InputStream inputStream = new FileInputStream(file);
+             OutputStreamWriter writer = new OutputStreamWriter(outputStream, "UTF-8")) {
+            IOUtils.copy(inputStream, writer);
+            writer.write("\n");
         }
     }
 
